@@ -48,7 +48,7 @@
 <?php include 'assets/html/footer.php'; ?>
 
 <script>
-    const MOVIES_API_URL = '/api/anime-world-india/v1/movie.php';
+    const MOVIES_API_URL = '/api/pratik-anime-stream/v1/movie.php';
     let currentPage = 1;
     let totalPages = 1;
 
