@@ -1,4 +1,4 @@
-# Anime World India Project
+# Pratik Anime Stream Project
 
 This project is a web application for browsing and watching anime series and movies. It leverages PHP for backend API routing and HTML/CSS/JavaScript for the frontend UI.
 
@@ -22,11 +22,11 @@ To deploy and run this project, you will need a local web server environment (e.
 
 ## API Documentation
 
-All API endpoints are located under `api/anime-world-india/v1/`.
+All API endpoints are located under `api/pratik anime-stream-/v1/`.
 
 ### 1. `a2z.php`
 
-*   **Endpoint:** `/api/anime-world-india/v1/a2z.php`
+*   **Endpoint:** `/api/pratik-anime-stream-/v1/a2z.php`
 *   **Method:** `GET`
 *   **Description:** Fetches a list of anime series and movies starting with a specific letter or number, with pagination support.
 
@@ -36,8 +36,8 @@ All API endpoints are located under `api/anime-world-india/v1/`.
 
 *   **Example Request:**
     ```
-    http://localhost/api/anime-world-india/v1/a2z.php?letter=a&page=1
-    http://localhost/api/anime-world-india/v1/a2z.php?letter=0-9
+    http://localhost/api/pratik-anime-stream/v1/a2z.php?letter=a&page=1
+    http://localhost/api/pratik-anime-stream/v1/a2z.php?letter=0-9
     ```
 
 *   **Example Success Response:**
@@ -65,7 +65,7 @@ All API endpoints are located under `api/anime-world-india/v1/`.
                 "rating": "TMDB 8.0",
                 "year": "2022",
                 "poster": "https://example.com/poster2.jpg",
-                "url": "https://animeworld-india.me/movie/movie-title-1",
+                "url": "https://pratikaniME-stream.me/movie/movie-title-1",
                 "id": "movie/movie-title-1",
                 "type": "movie"
             }
@@ -83,7 +83,7 @@ All API endpoints are located under `api/anime-world-india/v1/`.
 
 ### 2. `episodes.php`
 
-*   **Endpoint:** `/api/anime-world-india/v1/episodes.php`
+*   **Endpoint:** `/api/pratik-anime-stream/v1/episodes.php`
 *   **Method:** `GET`
 *   **Description:** Fetches details for a specific season of an anime series, including its episodes.
 
@@ -92,14 +92,14 @@ All API endpoints are located under `api/anime-world-india/v1/`.
 
 *   **Example Request:**
     ```
-    http://localhost/api/anime-world-india/v1/episodes.php?seasonId=one-punch-man-season-1
+    http://localhost/api/pratik-anime-stream/v1/episodes.php?seasonId=one-punch-man-season-1
     ```
 
 *   **Example Success Response:**
     ```json
     {
         "success": true,
-        "source": "animeworld-india.me/season",
+        "source": "pratikanime-stream.me/season",
         "season": {
             "seasonId": "one-punch-man-season-1",
             "animeTitle": "One-Punch Man",
@@ -141,7 +141,7 @@ All API endpoints are located under `api/anime-world-india/v1/`.
 
 ### 3. `home.php`
 
-*   **Endpoint:** `/api/anime-world-india/v1/home.php`
+*   **Endpoint:** `/api/pratik-anime-stream/v1/home.php`
 *   **Method:** `GET`
 *   **Description:** Fetches the latest anime series and movies displayed on the homepage.
 
@@ -149,14 +149,14 @@ All API endpoints are located under `api/anime-world-india/v1/`.
 
 *   **Example Request:**
     ```
-    http://localhost/api/anime-world-india/v1/home.php
+    http://localhost/api/pratik-anime-stream/v1/home.php
     ```
 
 *   **Example Success Response:**
     ```json
     {
         "success": true,
-        "source": "animeworld-india.me",
+        "source": "pratikaniME-stream.me",
         "latest_series": [
             {
                 "title": "Latest Series Title 1",
@@ -188,7 +188,7 @@ All API endpoints are located under `api/anime-world-india/v1/`.
 
 ### 4. `movie.php`
 
-*   **Endpoint:** `/api/anime-world-india/v1/movie.php`
+*   **Endpoint:** `/api/pratik-aniME-stream/v1/movie.php`
 *   **Method:** `GET`
 *   **Description:** Fetches a paginated list of movies. This API appears to fetch a general list of movies, not details for a single movie.
 
@@ -197,14 +197,14 @@ All API endpoints are located under `api/anime-world-india/v1/`.
 
 *   **Example Request:**
     ```
-    http://localhost/api/anime-world-india/v1/movie.php?p=1
+    http://localhost/api/pratik-aniME-stream/v1/movie.php?p=1
     ```
 
 *   **Example Success Response:**
     ```json
     {
         "success": true,
-        "source": "animeworld-india.me/movies",
+        "source": "pratik-aniME-stream.me/movies",
         "current_page": 1,
         "total_pages": 10,
         "has_next": true,
@@ -233,7 +233,7 @@ All API endpoints are located under `api/anime-world-india/v1/`.
 
 ### 5. `search.php`
 
-*   **Endpoint:** `/api/anime-world-india/v1/search.php`
+*   **Endpoint:** `/api/pratik-aniME-stream/v1/search.php`
 *   **Method:** `GET`
 *   **Description:** Searches for anime series and movies based on a query string, with pagination support.
 
@@ -243,7 +243,7 @@ All API endpoints are located under `api/anime-world-india/v1/`.
 
 *   **Example Request:**
     ```
-    http://localhost/api/anime-world-india/v1/search.php?query=jujutsu%20kaisen&p=1
+    http://localhost/api/pratik-aniME-stream/v1/search.php?query=jujutsu%20kaisen&p=1
     ```
 
 *   **Example Success Response:**
@@ -278,7 +278,7 @@ All API endpoints are located under `api/anime-world-india/v1/`.
 
 ### 6. `seasons.php`
 
-*   **Endpoint:** `/api/anime-world-india/v1/seasons.php`
+*   **Endpoint:** `/api/pratik-aniME-stream/v1/seasons.php`
 *   **Method:** `GET`
 *   **Description:** Retrieves detailed information about a specific anime series, including its seasons.
 
@@ -287,14 +287,14 @@ All API endpoints are located under `api/anime-world-india/v1/`.
 
 *   **Example Request:**
     ```
-    http://localhost/api/anime-world-india/v1/seasons.php?seriesID=one-punch-man
+    http://localhost/api/pratik-aniME-stream/v1/seasons.php?seriesID=one-punch-man
     ```
 
 *   **Example Success Response:**
     ```json
     {
         "success": true,
-        "source": "animeworld-india.me/series",
+        "source": "pratikaniME-stream.me/series",
         "series": {
             "seriesId": "one-punch-man",
             "title": "One-Punch Man",
@@ -326,7 +326,7 @@ All API endpoints are located under `api/anime-world-india/v1/`.
 
 ### 7. `series.php`
 
-*   **Endpoint:** `/api/anime-world-india/v1/series.php`
+*   **Endpoint:** `/api/pratik-aniME-stream/v1/series.php`
 *   **Method:** `GET`
 *   **Description:** Fetches a paginated list of anime series.
 
@@ -335,14 +335,14 @@ All API endpoints are located under `api/anime-world-india/v1/`.
 
 *   **Example Request:**
     ```
-    http://localhost/api/anime-world-india/v1/series.php?p=1
+    http://localhost/api/pratik-anime-stream/v1/series.php?p=1
     ```
 
 *   **Example Success Response:**
     ```json
     {
         "success": true,
-        "source": "animeworld-india.me/series",
+        "source": "pratikanime-stream.me/series",
         "current_page": 1,
         "total_pages": 50,
         "has_next": true,
@@ -371,7 +371,7 @@ All API endpoints are located under `api/anime-world-india/v1/`.
 
 ### 8. `stream.php`
 
-*   **Endpoint:** `/api/anime-world-india/v1/stream.php`
+*   **Endpoint:** `/api/pratik-anime-stream/v1/stream.php`
 *   **Method:** `GET`
 *   **Description:** Fetches streaming and download links for a specific movie or episode, along with its details and related series/episode information.
 
@@ -382,7 +382,7 @@ All API endpoints are located under `api/anime-world-india/v1/`.
 
 *   **Example Request (Episode):**
     ```
-    http://localhost/api/anime-world-india/v1/stream.php?episodeId=one-punch-man-s1-episode-1
+    http://localhost/api/pratik-anime-stream/v1/stream.php?episodeId=one-punch-man-s1-episode-1
     ```
 
 *   **Example Success Response (Episode):**
@@ -390,7 +390,7 @@ All API endpoints are located under `api/anime-world-india/v1/`.
     {
         "success": true,
         "type": "episode",
-        "source": "animeworld-india.me/episode",
+        "source": "pratikanime-stream.me/episode",
         "series": {
             "title": "One-Punch Man",
             "poster": "https://example.com/one-punch-man-s1-poster.jpg",
@@ -426,7 +426,7 @@ All API endpoints are located under `api/anime-world-india/v1/`.
 
 *   **Example Request (Movie):**
     ```
-    http://localhost/api/anime-world-india/v1/stream.php?movieId=jujutsu-kaisen-0-movie
+    http://localhost/api/pratik-anime-stream/v1/stream.php?movieId=jujutsu-kaisen-0-movie
     ```
 
 *   **Example Success Response (Movie):**
@@ -434,7 +434,7 @@ All API endpoints are located under `api/anime-world-india/v1/`.
     {
         "success": true,
         "type": "movie",
-        "source": "animeworld-india.me/movie",
+        "source": "pratikanime-stream.me/movie",
         "movie": {
             "movieId": "jujutsu-kaisen-0-movie",
             "title": "Jujutsu Kaisen 0 Movie",
