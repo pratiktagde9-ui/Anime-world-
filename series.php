@@ -63,7 +63,7 @@
             }
 
             try {
-                const response = await fetch(`/api/anime-world-india/v1/seasons.php?seriesID=${seriesId}`);
+                const response = await fetch(`/api/pratik-anime-stream/v1/seasons.php?seriesID=${seriesId}`);
                 const data = await response.json();
 
                 if (data.success) {
@@ -77,7 +77,7 @@
         }
 
         function renderSeries(series, seasons) {
-            document.title = `${series.title} - Anime World`;
+            document.title = `${series.title} - Anime stream`;
             
             // Hero info
             document.getElementById('hero-bg').style.backgroundImage = `url(${series.poster})`;
