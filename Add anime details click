@@ -35,7 +35,7 @@ async function loadAnime() {
 
     data.data.Page.media.forEach(anime => {
       cards.innerHTML += `
-        <div class="card">
+        <div class="card" onclick="window.location.href='details.html?id=${anime.id}'">
           <img src="${anime.coverImage.large}" alt="${anime.title.romaji}" style="width:100%;border-radius:10px;">
           <h3>${anime.title.romaji}</h3>
           <p>Episodes: ${anime.episodes ?? "?"}</p>
@@ -95,7 +95,7 @@ search.addEventListener("keyup", async () => {
 
     data.data.Page.media.forEach(anime => {
       cards.innerHTML += `
-        <div class="card">
+        <div class="card" onclick="window.location.href='details.html?id=${anime.id}'">
           <img src="${anime.coverImage.large}" style="width:100%;border-radius:10px;">
           <h3>${anime.title.romaji}</h3>
           <p>Episodes: ${anime.episodes ?? "?"}</p>
