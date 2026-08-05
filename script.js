@@ -43,6 +43,7 @@ async function loadAnime() {
         </div>
       `;
     });
+
   } catch (err) {
     console.error(err);
   }
@@ -53,7 +54,13 @@ loadAnime();
 const search = document.getElementById("search");
 
 search.addEventListener("keyup", async () => {
-  const value = search.value;
+
+  const value = search.value.trim();
+
+  if (value === "") {
+    loadAnime();
+    return;
+  }
 
   const searchQuery = `
   query {
@@ -70,8 +77,7 @@ search.addEventListener("keyup", async () => {
         }
       }
     }
-  }
-  `;
+  }`;
 
   try {
     const res = await fetch(API_URL, {
@@ -101,4 +107,5 @@ search.addEventListener("keyup", async () => {
   } catch (err) {
     console.error(err);
   }
+
 });
