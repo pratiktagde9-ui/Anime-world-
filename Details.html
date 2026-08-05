@@ -36,7 +36,7 @@ const id = new URLSearchParams(window.location.search).get("id");
 
 const query = `
 query {
-  Media(id:${id}, type:ANIME){
+  Media(id: ${id}, type: ANIME) {
     title{
       romaji
     }
