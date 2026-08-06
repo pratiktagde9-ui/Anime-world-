@@ -111,7 +111,7 @@ search.addEventListener("keyup", async () => {
 });
 
 // Trending Anime
-const trendingBox = document.querySelector(".trending .cards");
+const trendingBox = document.querySelector(".trending.cards");
 
 if (trendingBox) {
   fetch(API_URL, {
@@ -137,15 +137,18 @@ if (trendingBox) {
   .then(res => res.json())
   .then(data => {
     trendingBox.innerHTML = "";
+
     data.data.Page.media.forEach(anime => {
       trendingBox.innerHTML += `
         <div class="card" onclick="window.location.href='details.html?id=${anime.id}'">
-          <img src="${anime.coverImage.large}">
+          <img src="${anime.coverImage.large}" style="width:100%;border-radius:10px;">
           <h3>${anime.title.romaji}</h3>
           <p>Episodes: ${anime.episodes ?? "?"}</p>
           <p>⭐ ${anime.averageScore ?? "N/A"}</p>
         </div>
       `;
     });
-  });
+  })
+  .catch(console.error);
 }
+
