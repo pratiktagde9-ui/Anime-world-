@@ -169,7 +169,23 @@ margin-top:40px;
         margin-top:10px;
     }
     }   
-    
+    html, body {
+    width: 100%;
+    overflow-x: hidden;
+}
+
+header {
+    width: 100%;
+}
+
+.hero,
+.section {
+    width: 100%;
+}
+
+input {
+    max-width: 220px;
+    }
     
     
 
