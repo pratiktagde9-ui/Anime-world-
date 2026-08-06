@@ -147,7 +147,59 @@ nav a{
 }
 
     }
+body{
+    background:#0d0d0d;
+    color:#fff;
+    font-family:Arial,sans-serif;
+}
 
+header{
+    background:#111;
+    border-bottom:2px solid #ff0000;
+}
+
+nav a{
+    color:#fff;
+    text-decoration:none;
+    transition:.3s;
+}
+
+nav a:hover{
+    color:#ff0000;
+}
+
+.hero{
+    background:linear-gradient(135deg,#111,#8b0000,#ff0000);
+    color:#fff;
+}
+
+button{
+    background:#ff0000;
+    color:#fff;
+    border:none;
+    border-radius:10px;
+    padding:12px 28px;
+}
+
+button:hover{
+    background:#cc0000;
+}
+
+.cards .card{
+    background:#1a1a1a;
+    border:2px solid #ff0000;
+    border-radius:15px;
+}
+
+input{
+    background:#1a1a1a;
+    color:#fff;
+    border:2px solid #ff0000;
+}
+
+.section h2{
+    color:#ff3333;
+    }
 
     
 
