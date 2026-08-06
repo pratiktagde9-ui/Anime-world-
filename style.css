@@ -216,7 +216,22 @@ input{
     display:block;
     width:100px;
     }
-    
+   .logo{
+    box-shadow:0 0 8px rgba(255,0,0,.5);
+}
+
+button{
+    background:#ff0000;
+}
+
+button:hover{
+    background:#cc0000;
+}
+
+#search{
+    max-width:350px;
+    margin:15px auto;
+    } 
 
   
         
