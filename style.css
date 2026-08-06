@@ -179,26 +179,35 @@ footer{
 
 .az-grid{
     display:grid;
-    grid-template-columns:repeat(7,1fr);
-    gap:12px;
+    grid-template-columns:repeat(6,1fr);
+    gap:15px;
     margin-top:20px;
 }
 
 .az-grid a{
-    background:#1d2536;
+    background:#20283a;
     color:#fff;
     text-decoration:none;
     text-align:center;
-    padding:15px;
-    border-radius:10px;
-    font-weight:bold;
+    padding:18px 0;
+    border-radius:12px;
+    font-size:20px;
+    font-weight:700;
     transition:.3s;
 }
 
 .az-grid a:hover{
     background:#ff0000;
     transform:scale(1.05);
-}
+   }
+    
+    
+
+
+
+    
+   
+
 
 footer{
     margin-top:40px;
