@@ -109,3 +109,43 @@ search.addEventListener("keyup", async () => {
   }
 
 });
+
+// Trending Anime
+const trendingBox = document.querySelector(".trending.cards");
+
+if (trendingBox) {
+  fetch(API_URL, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      query: `
+      query {
+        Page(page: 1, perPage: 6) {
+          media(type: ANIME, sort: TRENDING_DESC) {
+            id
+            title { romaji }
+            coverImage { large }
+            episodes
+            averageScore
+          }
+        }
+      }`
+    })
+  })
+  .then(res => res.json())
+  .then(data => {
+    trendingBox.innerHTML = "";
+    data.data.Page.media.forEach(anime => {
+      trendingBox.innerHTML += `
+        <div class="card" onclick="window.location.href='details.html?id=${anime.id}'">
+          <img src="${anime.coverImage.large}">
+          <h3>${anime.title.romaji}</h3>
+          <p>Episodes: ${anime.episodes ?? "?"}</p>
+          <p>⭐ ${anime.averageScore ?? "N/A"}</p>
+        </div>
+      `;
+    });
+  });
+}
