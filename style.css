@@ -28,11 +28,17 @@ color:#9b5cff;
 }
 
 nav a{
-color:white;
-text-decoration:none;
-margin:0 12px;
-transition:.3s;
+    color:white;
+    text-decoration:none;
+    display:inline-block;
+    margin-right:20px;
+    transition:.3s;
 }
+
+
+
+
+
 
 nav a:hover{
 color:#9b5cff;
