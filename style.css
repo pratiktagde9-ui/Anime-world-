@@ -169,9 +169,12 @@ nav a:hover{
 }
 
 .hero{
-    background:linear-gradient(135deg,#111,#8b0000,#ff0000);
+    background: linear-gradient(135deg,#000000,#1a0000,#4d0000);
     color:#fff;
 }
+    
+    
+
 
 button{
     background:#ff0000;
