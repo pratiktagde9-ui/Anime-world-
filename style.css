@@ -203,7 +203,19 @@ input{
 .section h2{
     color:#ff3333;
     }
+.logo{
+    background:#1a0000;
+    padding:10px;
+    border:2px solid #ff0000;
+    border-radius:15px;
+    display:inline-block;
+    box-shadow:0 0 15px rgba(255,0,0,0.6);
+}
 
+.logo img{
+    display:block;
+    width:100px;
+    }
     
 
   
