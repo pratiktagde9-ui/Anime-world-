@@ -111,7 +111,7 @@ search.addEventListener("keyup", async () => {
 });
 
 // Trending Anime
-const trendingBox = document.querySelector(".trending.cards");
+const trendingBox = document.querySelector(".trending .cards");
 
 if (trendingBox) {
   fetch(API_URL, {
