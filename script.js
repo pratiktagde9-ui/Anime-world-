@@ -151,4 +151,43 @@ if (trendingBox) {
   })
   .catch(console.error);
 }
+// Latest Anime
+const latestBox = document.querySelector(".latest.cards");
 
+if (latestBox) {
+  fetch(API_URL, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      query: `
+      query {
+        Page(page: 1, perPage: 6) {
+          media(type: ANIME, sort: START_DATE_DESC) {
+            id
+            title { romaji }
+            coverImage { large }
+            episodes
+            averageScore
+          }
+        }
+      }`
+    })
+  })
+  .then(res => res.json())
+  .then(data => {
+    latestBox.innerHTML = "";
+    data.data.Page.media.forEach(anime => {
+      latestBox.innerHTML += `
+        <div class="card" onclick="window.location.href='details.html?id=${anime.id}'">
+          <img src="${anime.coverImage.large}" style="width:100%;border-radius:10px;">
+          <h3>${anime.title.romaji}</h3>
+          <p>Episodes: ${anime.episodes ?? "?"}</p>
+          <p>⭐ ${anime.averageScore ?? "N/A"}</p>
+        </div>
+      `;
+    });
+  })
+  .catch(console.error);
+          }
