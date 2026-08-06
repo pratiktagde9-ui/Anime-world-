@@ -12,7 +12,8 @@ color:#fff;
 
 header{
 display:flex;
-justify-content:space-between;
+justify-content: flex-start;
+gap: 15px;
 align-items:center;
 padding:20px 40px;
 background:#141428;
@@ -129,10 +130,16 @@ background:#141428;
 margin-top:40px;
 }
 .logo img{
-    height:150px;
+    height:100px;
     width:auto;
     display:block;
+    margin-right:10px;
 }
+    
+    
+    
+    
+
     
 
   
