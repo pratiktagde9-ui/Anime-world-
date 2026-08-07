@@ -283,7 +283,15 @@ footer{
   font-size:14px;
   margin:4px 0;
    }    
+.hero {
+    border: none !important;
+    border-radius: 0 !important;
+}
 
+.hero img {
+    border: none !important;
+    border-radius: 0 !important;
+   }
 
 
 
