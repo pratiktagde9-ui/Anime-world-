@@ -256,15 +256,20 @@ footer{
 .card{
   flex:0 0 196px;
   width:196px;
+  border:none;
+  background:transparent;
 }
 
 .card img{
   width:196px;
-  height:280px;
+  height:295px;
   object-fit:cover;
-  border-radius:5px;
+  border-radius:4px;
   display:block;
 }
+  
+  
+
 
 .card h3{
   font-size:16px;
