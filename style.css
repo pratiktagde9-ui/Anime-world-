@@ -230,23 +230,27 @@ footer{
 
 @media (max-width:768px){
 
-  .az-grid{
-    grid-template-columns: repeat(6, 1fr);
-    gap: 10px;
-  }
+    .az-grid{
+        grid-template-columns:repeat(6,1fr);
+        gap:10px;
+    }
 
-  .az-grid a{
-    height: 40px;
-    padding: 0;
-    font-size: 14px;
-    font-weight: 600;
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+    .az-grid a{
+        height:40px;
+        padding:0 !important;
+        font-size:14px !important;
+        font-weight:600;
+        border-radius:8px;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        box-sizing:border-box;
+    }
 
    }
+  
+
+   
 
     
     
