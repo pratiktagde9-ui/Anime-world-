@@ -241,47 +241,70 @@ footer{
     justify-content:center;
     box-sizing:border-box;
 }
-    
-
-
-
-
-    
-    
-
-   
-  
-
-   
-
-    
-    
-  
-
-
-   
-
-   
-  
-
-
-
-    
-
-
-
-    
-
-
-
-    
-
-
-.card img{
-    height:220px;
+.cards{
+  display:flex;
+  gap:10px;
+  overflow-x:auto;
+  padding:10px 0 15px;
+  scrollbar-width:none;
 }
 
-    }
+.cards::-webkit-scrollbar{
+  display:none;
+}
+
+.card{
+  flex:0 0 196px;
+  width:196px;
+}
+
+.card img{
+  width:196px;
+  height:280px;
+  object-fit:cover;
+  border-radius:5px;
+  display:block;
+}
+
+.card h3{
+  font-size:16px;
+  margin:8px 0 4px;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+.card p{
+  font-size:14px;
+  margin:4px 0;
+   }    
+
+
+
+
+    
+    
+
+   
+  
+
+   
+
+    
+    
+  
+
+
+   
+
+   
+  
+
+
+
+
+
+   
   
         
     
