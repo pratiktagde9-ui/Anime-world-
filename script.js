@@ -1,41 +1,260 @@
-const API="https://graphql.anilist.co";
+const API = "https://graphql.anilist.co";
 
-const series=[
-  [16498,"Shingeki no Kyojin"],[38000,"Kimetsu no Yaiba"],[101922,"Jujutsu Kaisen"],
-  [21459,"Boku no Hero Academia"],[21,"One Piece"],[20,"Naruto: Shippuden"],
-  [1535,"Death Note"],[11061,"Hunter x Hunter"],[21087,"One Punch Man"],
-  [100166,"Tokyo Ghoul"],[113415,"Blue Lock"],[101348,"Demon Slayer"]
-];
-const movies=[
- [101249,"Demon Slayer: Mugen Train"],[16870,"Your Name."],[11013,"Jujutsu Kaisen 0"],
- [20997,"Dragon Ball Super: Broly"],[103047,"Suzume"],[97986,"One Piece Film Red"]
+const series = [
+  [16498, "Shingeki no Kyojin"],
+  [38000, "Kimetsu no Yaiba"],
+  [21459, "Boku no Hero Academia"],
+  [21, "One Piece"],
+  [20, "Naruto"],
+  [1535, "Death Note"],
+  [11061, "Hunter x Hunter"],
+  [100166, "Tokyo Ghoul"],
+  [113415, "Blue Lock"],
+  [101348, "Death Parade"]
 ];
 
-function card(x,movie=false){
- const title=x.title.english||x.title.romaji||"Anime";
- const score=x.averageScore?(x.averageScore/10).toFixed(1):"—";
- return `<article class="card"><div class="poster"><img src="${x.coverImage.extraLarge||x.coverImage.large}" loading="lazy" alt="${title}"><span class="badge">${movie?"Movie":"HD"}</span></div><div class="card-body"><h3>${title}</h3><p>${movie?"Movie":"Episodes"}: ${x.episodes??"—"}</p><div class="rating">★ ${score}</div></div></article>`;
+const movies = [
+  [101249, "Demon Slayer: Mugen Train"],
+  [16870, "Your Name"],
+  [20997, "Dragon Ball Super: Broly"],
+  [103047, "Jujutsu Kaisen 0"],
+  [97986, "Suzume"],
+  [106518, "One Piece Film: Red"]
+];
+
+function makeCard(anime, movie = false) {
+  const title =
+    anime.title?.english ||
+    anime.title?.romaji ||
+    "Anime";
+
+  const score = anime.averageScore
+    ? (anime.averageScore / 10).toFixed(1)
+    : "0.0";
+
+  const episodes = anime.episodes || "N/A";
+
+  const image =
+    anime.coverImage?.extraLarge ||
+    anime.coverImage?.large ||
+    "";
+
+  return `
+    <article class="card">
+      <div class="poster">
+        <img
+          src="${image}"
+          alt="${title}"
+          loading="lazy"
+          onerror="this.style.display='none'"
+        >
+
+        <span class="badge">
+          ${movie ? "Movie" : "HD"}
+        </span>
+      </div>
+
+      <div class="card-info">
+        <h3 title="${title}">${title}</h3>
+
+        ${
+          movie
+            ? ""
+            : `<p>Episodes: ${episodes}</p>`
+        }
+
+        <div class="rating">
+          <span>★</span> ${score}
+        </div>
+      </div>
+    </article>
+  `;
 }
-async function fetchIds(ids){
- const query=`query($ids:[Int]){Page(perPage:20){media(id_in:$ids){id title{romaji english} episodes averageScore coverImage{large extraLarge}}}}`;
- const r=await fetch(API,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({query,variables:{ids}})});
- return (await r.json()).data.Page.media||[];
+
+async function fetchAnime(ids) {
+  const query = `
+    query ($ids: [Int]) {
+      Page(perPage: 50) {
+        media(id_in: $ids, type: ANIME) {
+          id
+          title {
+            romaji
+            english
+          }
+          episodes
+          averageScore
+          coverImage {
+            large
+            extraLarge
+          }
+        }
+      }
+    }
+  `;
+
+  const response = await fetch(API, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Accept": "application/json"
+    },
+    body: JSON.stringify({
+      query: query,
+      variables: {
+        ids: ids
+      }
+    })
+  });
+
+  if (!response.ok) {
+    throw new Error("AniList API error");
+  }
+
+  const json = await response.json();
+
+  if (json.errors) {
+    throw new Error(json.errors[0].message);
+  }
+
+  return json.data?.Page?.media || [];
 }
-async function load(){
- try{
-  const [s,m]=await Promise.all([fetchIds(series.map(x=>x[0])),fetchIds(movies.map(x=>x[0]))]);
-  document.querySelector("#series-grid").innerHTML=s.map(x=>card(x)).join("");
-  document.querySelector("#movie-grid").innerHTML=m.map(x=>card(x,true)).join("");
- }catch(e){
-  document.querySelector("#series-grid").innerHTML="<p style='color:#aaa'>Anime data load nahi hua. Internet check karke refresh karo.</p>";
- }
+
+async function loadHome() {
+  const seriesGrid = document.querySelector("#series-grid");
+  const movieGrid = document.querySelector("#movie-grid");
+
+  try {
+    if (seriesGrid) {
+      seriesGrid.innerHTML =
+        `<p class="loading">Loading series...</p>`;
+    }
+
+    if (movieGrid) {
+      movieGrid.innerHTML =
+        `<p class="loading">Loading movies...</p>`;
+    }
+
+    const [seriesData, movieData] = await Promise.all([
+      fetchAnime(series.map(item => item[0])),
+      fetchAnime(movies.map(item => item[0]))
+    ]);
+
+    if (seriesGrid) {
+      const sortedSeries = series
+        .map(item =>
+          seriesData.find(anime => anime.id === item[0])
+        )
+        .filter(Boolean);
+
+      seriesGrid.innerHTML = sortedSeries
+        .map(anime => makeCard(anime, false))
+        .join("");
+    }
+
+    if (movieGrid) {
+      const sortedMovies = movies
+        .map(item =>
+          movieData.find(anime => anime.id === item[0])
+        )
+        .filter(Boolean);
+
+      movieGrid.innerHTML = sortedMovies
+        .map(anime => makeCard(anime, true))
+        .join("");
+    }
+
+  } catch (error) {
+    console.error("Loading error:", error);
+
+    if (seriesGrid) {
+      seriesGrid.innerHTML =
+        `<p class="loading">Series load nahi ho paayi.</p>`;
+    }
+
+    if (movieGrid) {
+      movieGrid.innerHTML =
+        `<p class="loading">Movies load nahi ho paayi.</p>`;
+    }
+  }
 }
-document.querySelector("#search").addEventListener("input",async e=>{
- const qv=e.target.value.trim();
- if(qv.length<2){load();return}
- const query=`query($s:String){Page(perPage:18){media(search:$s,type:ANIME,sort:POPULARITY_DESC){id title{romaji english} episodes averageScore coverImage{large extraLarge}}}}`;
- const r=await fetch(API,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({query,variables:{s:qv}})});
- const data=await r.json();
- document.querySelector("#series-grid").innerHTML=(data.data.Page.media||[]).map(x=>card(x)).join("");
-});
-load();
+
+
+// SEARCH
+const search = document.querySelector("#search");
+
+if (search) {
+  search.addEventListener("input", async function () {
+
+    const value = this.value.trim();
+
+    if (value.length < 2) {
+      loadHome();
+      return;
+    }
+
+    const seriesGrid = document.querySelector("#series-grid");
+    const movieGrid = document.querySelector("#movie-grid");
+
+    try {
+      const query = `
+        query ($search: String) {
+          Page(perPage: 24) {
+            media(
+              search: $search
+              type: ANIME
+              sort: POPULARITY_DESC
+            ) {
+              id
+              title {
+                romaji
+                english
+              }
+              episodes
+              averageScore
+              coverImage {
+                large
+                extraLarge
+              }
+            }
+          }
+        }
+      `;
+
+      const response = await fetch(API, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify({
+          query: query,
+          variables: {
+            search: value
+          }
+        })
+      });
+
+      const json = await response.json();
+
+      const results =
+        json.data?.Page?.media || [];
+
+      if (seriesGrid) {
+        seriesGrid.innerHTML = results
+          .map(anime => makeCard(anime, false))
+          .join("");
+      }
+
+      if (movieGrid) {
+        movieGrid.innerHTML = "";
+      }
+
+    } catch (error) {
+      console.error("Search error:", error);
+    }
+  });
+}
+
+
+// START
+document.addEventListener("DOMContentLoaded", loadHome);
