@@ -296,7 +296,29 @@ footer{
     border: none !important;
     border-radius: 0 !important;
    }
+/* NEWEST DROPS - HORIZONTAL CARDS */
+.cards {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  gap: 16px !important;
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  padding: 5px 0 15px !important;
+}
 
+.cards .card {
+  flex: 0 0 196px !important;
+  width: 196px !important;
+}
+
+.cards::-webkit-scrollbar {
+  height: 5px;
+}
+
+.cards::-webkit-scrollbar-thumb {
+  background: #ff0000;
+  border-radius: 10px;
+   }
     
     
    
