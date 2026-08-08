@@ -155,8 +155,9 @@ async function fetchAnime(ids) {
 async function loadHome() {
   const seriesGrid = document.querySelector("#series-grid");
   const movieGrid = document.querySelector("#movie-grid");
-
+const cartoonGrid = document.querySelector("#cartoon-grid");
   try {
+    if (cartoonGrid) cartoonGrid.innerHTML = `<p class="loading">Loading cartoons...</p>`;
     if (seriesGrid) {
       seriesGrid.innerHTML =
         `<p class="loading">Loading series...</p>`;
@@ -167,10 +168,11 @@ async function loadHome() {
         `<p class="loading">Loading movies...</p>`;
     }
 
-    const [seriesData, movieData, latestMovieData] = await Promise.all([
+    const [seriesData, movieData, latestMovieData, cartoonData] = await Promise.all([
   fetchAnime(series.map(item => item[0])),
   fetchAnime(movies.map(item => item[0])),
-  fetchAnime(latestMovies.map(item => item[0]))
+  fetchAnime(latestMovies.map(item => item[0])),
+  fetchAnime(cartoons.map(item => item[0]))
 ]);
       
       
