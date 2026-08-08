@@ -171,12 +171,12 @@ const cartoonGrid = document.querySelector("#cartoon-grid");
         `<p class="loading">Loading movies...</p>`;
     }
 
-    const [seriesData, movieData, latestMovieData, cartoonData] = await Promise.all([
-  fetchAnime(series.map(item => item[0])),
-  fetchAnime(movies.map(item => item[0])),
-  fetchAnime(latestMovies.map(item => item[0])),
-  fetchAnime(cartoons.map(item => item[0]))
-]);
+    const [seriesData, movieData, latestMovieData] =
+  await Promise.all([
+    fetchAnime(series.map(item => item[0])),
+    fetchAnime(movies.map(item => item[0])),
+    fetchAnime(latestMovies.map(item => item[0]))
+  ]);
       
       
     
@@ -217,7 +217,18 @@ if (latestMovieGrid) {
     .map(anime => makeCard(anime, true))
     .join("");
       }
-    
+    if (cartoonGrid) {
+  const sortedCartoons = cartoons
+    .map(item =>
+      cartoonData.find(anime => anime.id === item[0])
+    )
+    .filter(Boolean);
+
+  cartoonGrid.innerHTML = sortedCartoons
+    .map(anime => makeCard(anime, false))
+    .join("");
+             }
+  
   } catch (error) {
     console.error("Loading error:", error);
 
