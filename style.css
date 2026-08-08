@@ -164,7 +164,54 @@ footer p{font-size:13px}
  .card img{height:160px}
  .card h3{font-size:13px}.card p{font-size:11px}
   }
-  
+  /* PREMIUM CARD STYLE */
+.card{
+  position:relative;
+  overflow:hidden;
+  border:1px solid rgba(255,23,68,.35);
+  border-radius:16px;
+  background:#0b0c10;
+  box-shadow:0 8px 25px rgba(0,0,0,.45);
+  transition:.3s ease;
+}
+
+.card:hover{
+  transform:translateY(-5px);
+  border-color:#ff1744;
+  box-shadow:0 10px 30px rgba(255,23,68,.25);
+}
+
+.card img{
+  width:100%;
+  object-fit:cover;
+  display:block;
+  transition:.4s ease;
+}
+
+.card:hover img{
+  transform:scale(1.04);
+}
+
+.card h3{
+  background:#0b0c10;
+  color:#fff;
+  margin:0;
+  padding:12px 10px 5px;
+  font-size:16px;
+}
+
+.card p{
+  background:#0b0c10;
+  margin:0;
+  padding:4px 10px;
+  color:#999;
+}
+
+.card p:last-child{
+  color:#ffd21c;
+  font-weight:bold;
+  padding-bottom:12px;
+}
 
 
     
