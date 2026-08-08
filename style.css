@@ -712,7 +712,495 @@ body{
     height:205px !important;
   }
   } 
-    
+  /* =========================================
+   PRATIK ANIME STREAM — PREMIUM FINAL UI
+   ========================================= */
+
+:root{
+  --bg:#050505;
+  --card:#0d0d10;
+  --red:#ff1744;
+  --red2:#e5092f;
+  --white:#fff;
+  --gray:#a9a9ad;
+}
+
+*{
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  margin:0 !important;
+  background:
+    radial-gradient(circle at 50% 0%,rgba(255,0,45,.10),transparent 35%),
+    #050505 !important;
+  color:#fff !important;
+  font-family:Arial,Helvetica,sans-serif !important;
+  overflow-x:hidden;
+}
+
+
+/* ================= HEADER ================= */
+
+.header{
+  position:sticky !important;
+  top:0 !important;
+  z-index:9999 !important;
+
+  min-height:76px !important;
+  padding:10px 22px !important;
+
+  display:flex !important;
+  align-items:center !important;
+  justify-content:space-between !important;
+  gap:20px !important;
+
+  background:rgba(5,5,7,.96) !important;
+  border-bottom:1px solid rgba(255,23,68,.25) !important;
+
+  box-shadow:
+    0 8px 30px rgba(0,0,0,.55),
+    0 1px 0 rgba(255,0,50,.08) !important;
+
+  backdrop-filter:blur(15px);
+}
+
+
+/* ================= LOGO ================= */
+
+.logo{
+  display:flex !important;
+  align-items:center !important;
+  gap:10px !important;
+  flex-shrink:0;
+}
+
+.logo img{
+  width:70px !important;
+  height:70px !important;
+  object-fit:contain !important;
+  border-radius:50% !important;
+}
+
+.logo h2{
+  margin:0 !important;
+  padding:0 !important;
+
+  color:#fff !important;
+  font-size:25px !important;
+  line-height:.98 !important;
+  font-weight:800 !important;
+  letter-spacing:-.5px;
+}
+
+.logo h2::first-line{
+  color:#ff1744;
+}
+
+
+/* ================= SEARCH ================= */
+
+.search-input{
+  width:300px !important;
+  height:48px !important;
+
+  padding:0 20px !important;
+
+  color:#fff !important;
+  background:#111115 !important;
+
+  border:1px solid #39393f !important;
+  border-radius:28px !important;
+
+  outline:none !important;
+
+  font-size:16px !important;
+
+  transition:.25s ease !important;
+}
+
+.search-input::placeholder{
+  color:#a4a4aa !important;
+}
+
+.search-input:focus{
+  border-color:#ff1744 !important;
+
+  box-shadow:
+    0 0 0 2px rgba(255,23,68,.12),
+    0 0 22px rgba(255,23,68,.22) !important;
+}
+
+
+/* ================= LOGIN ================= */
+
+.login-btn{
+  min-width:125px !important;
+  height:48px !important;
+
+  border:0 !important;
+  border-radius:28px !important;
+
+  background:linear-gradient(
+    135deg,
+    #ff1744,
+    #e5092f
+  ) !important;
+
+  color:#fff !important;
+
+  font-size:16px !important;
+  font-weight:700 !important;
+
+  box-shadow:
+    0 5px 20px rgba(255,23,68,.25) !important;
+
+  transition:.2s ease !important;
+}
+
+.login-btn:hover{
+  transform:translateY(-2px);
+  box-shadow:
+    0 8px 28px rgba(255,23,68,.4) !important;
+}
+
+
+/* ================= BANNER ================= */
+
+.hero,
+.banner{
+  margin:24px 20px !important;
+
+  overflow:hidden !important;
+
+  border-radius:22px !important;
+
+  border:1px solid rgba(255,23,68,.55) !important;
+
+  background:#000 !important;
+
+  box-shadow:
+    0 0 25px rgba(255,0,40,.12),
+    0 12px 40px rgba(0,0,0,.6) !important;
+}
+
+.hero img,
+.banner img{
+  width:100% !important;
+  height:auto !important;
+
+  display:block !important;
+
+  object-fit:cover !important;
+
+  transition:transform .5s ease;
+}
+
+.hero:hover img,
+.banner:hover img{
+  transform:scale(1.015);
+}
+
+
+/* ================= SECTION ================= */
+
+.section-title,
+.section-header{
+  display:flex !important;
+  align-items:center !important;
+  justify-content:space-between !important;
+
+  margin:30px 20px 16px !important;
+}
+
+.section-title h2,
+.section-header h2{
+  margin:0 !important;
+
+  color:#fff !important;
+
+  font-size:27px !important;
+  font-weight:800 !important;
+}
+
+.section-title h2::before,
+.section-header h2::before{
+  content:"";
+
+  display:inline-block;
+
+  width:5px;
+  height:34px;
+
+  margin-right:12px;
+
+  vertical-align:-6px;
+
+  background:#ff1744;
+
+  border-radius:5px;
+
+  box-shadow:0 0 12px rgba(255,23,68,.5);
+}
+
+
+/* VIEW ALL */
+
+.view-all{
+  color:#ff1744 !important;
+  font-size:18px !important;
+  font-weight:700 !important;
+  text-decoration:none !important;
+}
+
+
+/* ================= CARDS GRID ================= */
+
+.cards{
+  display:grid !important;
+
+  grid-template-columns:
+    repeat(3,minmax(0,1fr)) !important;
+
+  gap:20px !important;
+
+  padding:0 20px !important;
+}
+
+
+/* ================= CARD ================= */
+
+.card{
+  position:relative;
+
+  overflow:hidden !important;
+
+  background:
+    linear-gradient(
+      180deg,
+      #111216 0%,
+      #09090b 100%
+    ) !important;
+
+  border:1px solid #29292d !important;
+
+  border-radius:16px !important;
+
+  box-shadow:
+    0 8px 25px rgba(0,0,0,.45) !important;
+
+  transition:
+    transform .25s ease,
+    border-color .25s ease,
+    box-shadow .25s ease !important;
+}
+
+.card:hover{
+  transform:translateY(-6px) !important;
+
+  border-color:rgba(255,23,68,.7) !important;
+
+  box-shadow:
+    0 14px 35px rgba(255,0,45,.18) !important;
+}
+
+
+/* CARD IMAGE */
+
+.card img{
+  width:100% !important;
+
+  height:330px !important;
+
+  object-fit:cover !important;
+
+  display:block !important;
+}
+
+
+/* CARD TEXT */
+
+.card h3,
+.card .title{
+  margin:12px 12px 5px !important;
+
+  color:#fff !important;
+
+  font-size:17px !important;
+
+  font-weight:700 !important;
+
+  white-space:nowrap;
+
+  overflow:hidden;
+
+  text-overflow:ellipsis;
+}
+
+.card p{
+  margin:5px 12px !important;
+
+  color:#aaa !important;
+
+  font-size:14px !important;
+}
+
+
+/* RATING */
+
+.card .rating{
+  margin:8px 12px 13px !important;
+
+  color:#ffd21f !important;
+
+  font-weight:700 !important;
+}
+
+
+/* ================= MOBILE ================= */
+
+@media(max-width:700px){
+
+  .header{
+    min-height:70px !important;
+
+    padding:8px 14px !important;
+
+    gap:10px !important;
+  }
+
+  .logo{
+    gap:7px !important;
+  }
+
+  .logo img{
+    width:52px !important;
+    height:52px !important;
+  }
+
+  .logo h2{
+    font-size:18px !important;
+  }
+
+  .search-input{
+    width:190px !important;
+    height:43px !important;
+
+    padding:0 15px !important;
+
+    font-size:14px !important;
+  }
+
+  .login-btn{
+    min-width:76px !important;
+    height:43px !important;
+
+    padding:0 14px !important;
+
+    font-size:14px !important;
+  }
+
+  .hero,
+  .banner{
+    margin:18px 14px !important;
+    border-radius:19px !important;
+  }
+
+  .section-title,
+  .section-header{
+    margin:25px 18px 14px !important;
+  }
+
+  .section-title h2,
+  .section-header h2{
+    font-size:22px !important;
+  }
+
+  .section-title h2::before,
+  .section-header h2::before{
+    height:28px;
+  }
+
+  .view-all{
+    font-size:16px !important;
+  }
+
+  .cards{
+    grid-template-columns:
+      repeat(2,minmax(0,1fr)) !important;
+
+    gap:14px !important;
+
+    padding:0 14px !important;
+  }
+
+  .card{
+    border-radius:14px !important;
+  }
+
+  .card img{
+    height:270px !important;
+  }
+
+  .card h3,
+  .card .title{
+    font-size:15px !important;
+    margin:10px 9px 4px !important;
+  }
+
+  .card p{
+    margin:4px 9px !important;
+    font-size:13px !important;
+  }
+
+  .card .rating{
+    margin:7px 9px 10px !important;
+  }
+}
+
+
+/* ================= VERY SMALL PHONE ================= */
+
+@media(max-width:390px){
+
+  .header{
+    padding:7px 10px !important;
+    gap:6px !important;
+  }
+
+  .logo img{
+    width:45px !important;
+    height:45px !important;
+  }
+
+  .logo h2{
+    font-size:15px !important;
+  }
+
+  .search-input{
+    width:130px !important;
+    height:40px !important;
+  }
+
+  .login-btn{
+    min-width:62px !important;
+    padding:0 10px !important;
+    height:40px !important;
+  }
+
+  .cards{
+    gap:10px !important;
+    padding:0 10px !important;
+  }
+
+  .card img{
+    height:220px !important;
+  }
+  }  
     
    
 
