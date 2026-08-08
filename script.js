@@ -214,6 +214,17 @@ if (latestMovieGrid) {
     .map(anime => makeCard(anime, true))
     .join("");
       }
+    if (cartoonGrid) {
+  const sortedCartoons = cartoons
+    .map(item =>
+      cartoonData.find(anime => anime.id === item[0])
+    )
+    .filter(Boolean);
+
+  cartoonGrid.innerHTML = sortedCartoons
+    .map(anime => makeCard(anime, false))
+    .join("");
+        }
   } catch (error) {
     console.error("Loading error:", error);
 
