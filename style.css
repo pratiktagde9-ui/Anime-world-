@@ -307,9 +307,18 @@ footer{
 }
 
 .cards .card {
-  flex: 0 0 196px !important;
-  width: 196px !important;
+  flex: 0 0 150px !important;
+  width: 150px !important;
 }
+
+.cards .card img {
+  width: 150px !important;
+  height: 210px !important;
+  object-fit: cover !important;
+}
+  
+  
+
 
 .cards::-webkit-scrollbar {
   height: 5px;
