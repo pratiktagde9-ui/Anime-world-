@@ -36,7 +36,10 @@ const latestMovies = [
   [108577, "Ride Your Wave"],
   [99750, "I Want to Eat Your Pancreas"]
 ];
-  
+  const cartoons = [
+  [527, "Pokemon"],
+  [247, "Doraemon"]
+];
   
   
   
