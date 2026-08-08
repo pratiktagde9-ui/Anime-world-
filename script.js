@@ -22,6 +22,22 @@ const movies = [
   [106518, "One Piece Film: Red"]
 ];
 
+const latestMovies = [
+  [101249, "Demon Slayer: Mugen Train"],
+  [16870, "Your Name"],
+  [20997, "Dragon Ball Super: Broly"],
+  [103047, "Suzume"],
+  [106518, "One Piece Film: Red"],
+  [97986, "Violet Evergarden: The Movie"]
+];
+  
+  
+  
+  
+  
+  
+
+
 function makeCard(anime, movie = false) {
   const title =
     anime.title?.english ||
@@ -134,10 +150,14 @@ async function loadHome() {
         `<p class="loading">Loading movies...</p>`;
     }
 
-    const [seriesData, movieData] = await Promise.all([
-      fetchAnime(series.map(item => item[0])),
-      fetchAnime(movies.map(item => item[0]))
-    ]);
+    const [seriesData, movieData, latestMovieData] = await Promise.all([
+  fetchAnime(series.map(item => item[0])),
+  fetchAnime(movies.map(item => item[0])),
+  fetchAnime(latestMovies.map(item => item[0]))
+]);
+      
+      
+    
 
     if (seriesGrid) {
       const sortedSeries = series
@@ -162,7 +182,19 @@ async function loadHome() {
         .map(anime => makeCard(anime, true))
         .join("");
     }
+const latestMovieGrid = document.querySelector("#latest-movie-grid");
 
+if (latestMovieGrid) {
+  const sortedLatestMovies = latestMovies
+    .map(item =>
+      latestMovieData.find(anime => anime.id === item[0])
+    )
+    .filter(Boolean);
+
+  latestMovieGrid.innerHTML = sortedLatestMovies
+    .map(anime => makeCard(anime, true))
+    .join("");
+      }
   } catch (error) {
     console.error("Loading error:", error);
 
