@@ -23,13 +23,26 @@ const movies = [
 ];
 
 const latestMovies = [
-  [101249, "Demon Slayer: Mugen Train"],
-  [16870, "Your Name"],
-  [20997, "Dragon Ball Super: Broly"],
-  [103047, "Suzume"],
-  [106518, "One Piece Film: Red"],
-  [97986, "Violet Evergarden: The Movie"]
+  [21519, "Your Name"],
+  [20954, "A Silent Voice"],
+  [106731, "Weathering With You"],
+  [199, "Spirited Away"],
+  [174788, "Look Back"],
+  [101921, "Violet Evergarden: The Movie"],
+  [116334, "The Quintessential Quintuplets Movie"],
+  [97986, "Suzume"],
+  [127230, "Demon Slayer: Mugen Train"],
+  [100643, "The Garden of Words"],
+  [108577, "Ride Your Wave"],
+  [99750, "I Want to Eat Your Pancreas"]
 ];
+  
+  
+  
+  
+  
+
+
   
   
   
